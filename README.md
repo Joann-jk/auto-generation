@@ -139,11 +139,6 @@ POST /api/pipeline
 
 ---
 
-## 👨‍💻 Author
-
-Your Name
-
----
 
 ## ⭐ If you like this project
 
