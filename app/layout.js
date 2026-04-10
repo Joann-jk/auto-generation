@@ -1,17 +1,38 @@
+import './globals.css';
+import { Inter, Playfair_Display } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
 export const metadata = {
-  title: "Autonomous Content Factory | Premium AI Campaign Studio",
+  title: {
+    default: "Autonomous Content Factory",
+    template: "%s | Autonomous Content Factory",
+  },
   description:
     "Craft high-converting marketing campaigns with intelligent multi-agent collaboration.",
-  themeColor: "#0A0A0A",
+  themeColor: "#f46e09",
   icons: {
-    icon: "/favicon.ico", // replace with your luxury black+gold favicon
+    icon: "/favicon.ico",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-brand-dark text-brand-cream antialiased">
+    <html
+      lang="en"
+      className={`bg-brand-black ${inter.variable} ${playfair.variable}`}
+    >
+      <body className="min-h-screen bg-brand-black text-brand-cream antialiased">
         {children}
       </body>
     </html>

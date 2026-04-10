@@ -15,12 +15,7 @@ import {
   Smartphone,
 } from "lucide-react";
 
-/*
-  Redesigned Campaign Start + Agent Room + Activity Feed + Side-by-Side + Final Review
-  - No emojis (lucide icons used)
-  - All inputs and string ops null-safe
-  - Keeps pipeline interaction intact: POST /api/pipeline
-*/
+
 
 export default function Home() {
   const [sourceMaterial, setSourceMaterial] = useState("");

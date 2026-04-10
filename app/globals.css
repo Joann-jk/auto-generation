@@ -3,14 +3,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Brand variables */
-:root{
-  --brand-black: #0A0A0A;
+/* Brand variables — updated to black + #f46e09 */
+:root {
+  --brand-black: #0a0a0a;
   --brand-charcoal: #111111;
-  --brand-gold: #C89B3C;
+  --brand-gold: #f46e09;
   --brand-gold-soft: #E0B85A;
-  --brand-cream: #F5F1E8;
-  --glass-alpha: 0.16;
+  --brand-cream: #f5f1e8;
+  --glass-alpha: 0.12;
 }
 
 :root {
@@ -136,46 +136,45 @@
 
 /* Body background: cinematic, subtle gradient */
 body {
-  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(17,17,17,1) 60%);
+  background: var(--brand-black);
   color: var(--brand-cream);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Glass card */
+/* Glass card adjusted for new palette */
 .card-glass {
-  background: rgba(255,255,255,var(--glass-alpha));
+  background: rgba(255, 255, 255, var(--glass-alpha));
   backdrop-filter: blur(8px) saturate(110%);
-  border-radius: 1rem; /* 16px */
-  border: 1px solid rgba(200,155,60,0.12);
-  box-shadow: 0 8px 30px rgba(2,2,2,0.6);
+  border-radius: 1rem;
+  border: 1px solid rgba(244, 110, 9, 0.08); /* subtle gold border using #f46e09 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* Gold button */
+/* Gold button uses the requested gold color */
 .btn-gold {
-  background: linear-gradient(90deg, rgba(200,155,60,1) 0%, rgba(224,184,90,1) 100%);
+  background: linear-gradient(90deg, var(--brand-gold) 0%, var(--brand-gold-soft) 100%);
   color: var(--brand-black);
   font-weight: 600;
 }
 .btn-gold:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(200,155,60,0.16), 0 1px 0 rgba(255,255,255,0.02) inset;
+  box-shadow: 0 12px 36px rgba(244, 110, 9, 0.12);
 }
 
 /* Gold focus ring */
 .input-focus-gold:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(200,155,60,0.08), 0 4px 24px rgba(0,0,0,0.6);
-  border-color: rgba(224,184,90,0.9);
+  box-shadow: 0 0 0 4px rgba(244, 110, 9, 0.08), 0 4px 24px rgba(0, 0, 0, 0.6);
+  border-color: rgba(244, 110, 9, 0.9);
 }
 
-/* Premium headings */
+/* Premium headings: single-color gold for clarity */
 .h1-premium {
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(90deg, var(--brand-cream), var(--brand-gold-soft));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--brand-gold);
+  -webkit-text-fill-color: var(--brand-gold);
 }
 
 /* Subtle appear animation */
@@ -186,7 +185,89 @@ body {
   animation-delay: 80ms;
 }
 @keyframes fadeUp {
-  to { transform: translateY(0); opacity: 1; }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Agent badge */
+.agent-badge {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.825rem;
+}
+
+/* Scroll containers */
+.panel-scroll {
+  max-height: 44vh;
+  overflow: auto;
+  padding-right: 0.5rem;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand variables — updated to black + #f46e09 */
+:root {
+  --brand-black: #0a0a0a;
+  --brand-charcoal: #111111;
+  --brand-gold: #f46e09;
+  --brand-gold-soft: #dcb559;
+  --brand-cream: #fe5900;
+  --glass-alpha: 0.12;
+}
+
+/* Ensure fonts from next/font are used via CSS variables set in layout.js */
+body {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--brand-black);
+  color: var(--brand-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings use Playfair Display */
+h1,
+h2,
+h3,
+.h1-premium {
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+/* Keep glass and other styles intact */
+.card-glass {
+  background: rgba(255, 255, 255, var(--glass-alpha));
+  backdrop-filter: blur(8px) saturate(110%);
+  border-radius: 1rem;
+  border: 1px solid rgba(244, 110, 9, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Gold button uses the requested gold color */
+.btn-gold {
+  background: linear-gradient(90deg, var(--brand-gold) 0%, var(--brand-gold-soft) 100%);
+  color: var(--brand-black);
+  font-weight: 600;
+}
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(244, 110, 9, 0.12);
+}
+
+/* Gold focus ring */
+.input-focus-gold:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(244, 110, 9, 0.08), 0 4px 24px rgba(0, 0, 0, 0.6);
+  border-color: rgba(244, 110, 9, 0.9);
+}
+
+/* Heading color override utility */
+.h1-gold {
+  color: var(--brand-gold) !important;
 }
 
 /* Agent badge */
